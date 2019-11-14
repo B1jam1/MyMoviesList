@@ -1,12 +1,12 @@
 // Components/MovieItem.js
 
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { getImageFromApi } from '../API/TMDBApi'
 
 class MovieItem extends React.Component {
     render() {
-        const movie = this.props.movie
+        const  {movie} = this.props.movie
         return (
           <View style={styles.main_container}>
             <Image

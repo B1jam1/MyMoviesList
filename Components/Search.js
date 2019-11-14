@@ -1,7 +1,6 @@
 // Components/Search.js
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator } from 'react-native'
-import movies from '../Helpers/moviesData'
 import MovieItem from './MovieItem'
 import getFilmsFromApiWithSearchedText from '../API/TMDBApi'
 
@@ -57,8 +56,12 @@ class Search extends React.Component {
     })
   }
   
+  /*
+  _displayDetailForMovie = (idMovie) => {
+    console.log("Display film with id " + idMovie)
+  }*/
+
   render() {
-      console.log(this.state.isLoading)
       return (
           <View style={ stylesSearch.main_container }>
               <TextInput onSubmitEditing={() => this._searchMovies()} onChangeText={(text) => this._searchTextInputChanged(text)} style={ stylesSearch.textinput } placeholder='Titre du film'/>
@@ -66,7 +69,7 @@ class Search extends React.Component {
               <FlatList
                   data={ this.state.movies }
                   keyExtractor={(item) => item.id.toString()}
-                  renderItem={({item}) => <MovieItem movie={item}/>}
+                  renderItem={({item}) => <MovieItem movie={item} />}
                   onEndReachedThreshold={0.5}
                   onEndReached={() => {
                     if(this.page < this.totalPages) {
@@ -82,8 +85,7 @@ class Search extends React.Component {
 
 const stylesSearch = StyleSheet.create({
     main_container: {
-        flex: 1,
-        marginTop: 20
+        flex: 1
       },
     textinput: {
       marginLeft: 5,
